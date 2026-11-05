@@ -1,0 +1,71 @@
+LABORATORIO U5 - EVIDENCIA DE PRUEBAS DEL ZIP V2
+Comando: python -m pytest -v --cov=src --cov-report=term-missing --cov-fail-under=80
+
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- /opt/pyvenv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.5', 'Platform': 'Linux-6.18.57-x86_64-with-glibc2.41', 'Packages': {'pytest': '9.0.2', 'pluggy': '1.6.0'}, 'Plugins': {'anyio': '4.13.0', 'ddtrace': '4.4.0', 'Faker': '40.1.2', 'asyncio': '1.3.0', 'cov': '7.0.0', 'json-report': '1.5.0', 'metadata': '3.1.1'}, 'PLATFORM': 'linux/amd64', 'CI': 'true'}
+rootdir: /mnt/data/u5_corregido/CLN_U5_Laboratorio_Resuelto
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.13.0, ddtrace-4.4.0, Faker-40.1.2, asyncio-1.3.0, cov-7.0.0, json-report-1.5.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 33 items
+
+tests/test_additional_cases.py::test_cp13_payment_rejected PASSED        [  3%]
+tests/test_additional_cases.py::test_cp14_commit_visible_in_another_session PASSED [  6%]
+tests/test_additional_cases.py::test_cp15_rollback_not_visible_in_another_session PASSED [  9%]
+tests/test_additional_cases.py::test_admin_can_cancel_non_shipped_order PASSED [ 12%]
+tests/test_additional_cases.py::test_owner_can_cancel_before_24_hour_limit PASSED [ 15%]
+tests/test_additional_cases.py::test_owner_cannot_cancel_at_24_hour_limit PASSED [ 18%]
+tests/test_additional_cases.py::test_security_uses_current_time_when_now_is_omitted PASSED [ 21%]
+tests/test_csv_cases.py::test_csv_scenarios[CP01] PASSED                 [ 24%]
+tests/test_csv_cases.py::test_csv_scenarios[CP02] PASSED                 [ 27%]
+tests/test_csv_cases.py::test_csv_scenarios[CP03] PASSED                 [ 30%]
+tests/test_csv_cases.py::test_csv_scenarios[CP04] PASSED                 [ 33%]
+tests/test_csv_cases.py::test_csv_scenarios[CP05] PASSED                 [ 36%]
+tests/test_csv_cases.py::test_csv_scenarios[CP06] PASSED                 [ 39%]
+tests/test_csv_cases.py::test_csv_scenarios[CP07] PASSED                 [ 42%]
+tests/test_csv_cases.py::test_csv_scenarios[CP08] PASSED                 [ 45%]
+tests/test_csv_cases.py::test_csv_scenarios[CP09] PASSED                 [ 48%]
+tests/test_csv_cases.py::test_csv_scenarios[CP10] PASSED                 [ 51%]
+tests/test_csv_cases.py::test_csv_scenarios[CP11] PASSED                 [ 54%]
+tests/test_csv_cases.py::test_csv_scenarios[CP12] PASSED                 [ 57%]
+tests/test_csv_cases.py::test_second_confirmation_rejected_after_first_confirmation PASSED [ 60%]
+tests/test_order.py::test_vip_discount PASSED                            [ 63%]
+tests/test_order.py::test_regular_no_discount PASSED                     [ 66%]
+tests/test_order.py::test_customer_debt PASSED                           [ 69%]
+tests/test_order.py::test_invalid_total[0] PASSED                        [ 72%]
+tests/test_order.py::test_invalid_total[-1] PASSED                       [ 75%]
+tests/test_repository.py::test_repository_commit PASSED                  [ 78%]
+tests/test_repository.py::test_repository_rollback PASSED                [ 81%]
+tests/test_security.py::test_owner_within_24h PASSED                     [ 84%]
+tests/test_security.py::test_stranger_denied PASSED                      [ 87%]
+tests/test_security.py::test_shipped_denied_even_admin PASSED            [ 90%]
+tests/test_security.py::test_expired_denied PASSED                       [ 93%]
+tests/test_service.py::test_gateway_approved PASSED                      [ 96%]
+tests/test_service.py::test_gateway_rejected PASSED                      [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.5-final-0 ________________
+
+Name                 Stmts   Miss  Cover   Missing
+--------------------------------------------------
+src/__init__.py          0      0   100%
+src/application.py       8      0   100%
+src/domain.py           21      0   100%
+src/repository.py       18      0   100%
+src/security.py          8      0   100%
+--------------------------------------------------
+TOTAL                   55      0   100%
+Required test coverage of 80% reached. Total coverage: 100.00%
+============================== 33 passed in 0.40s ==============================
+
+EVIDENCIA CP14: commit visible entre sesiones (test_cp14_commit_visible_in_another_session).
+EVIDENCIA CP15: rollback no persiste cambios (test_cp15_rollback_not_visible_in_another_session).
+CP08: doble confirmacion bloqueada (test_csv_scenarios[CP08] y test_second_confirmation_rejected_after_first_confirmation).
+
+ESTILO: Se corrigieron importaciones I001 y usos de timezone.utc (UP017).
+Windows: EJECUTAR_WINDOWS.bat ejecuta ruff check --fix, ruff format y ruff check.
+NOTA: Ruff no pudo ejecutarse en este entorno aislado porque la dependencia no esta instalada y la descarga no tiene acceso a red.
+El propio ejecutable de Windows instalara Ruff y validara el estilo localmente.

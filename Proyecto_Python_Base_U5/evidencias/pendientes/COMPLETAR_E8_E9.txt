@@ -1,0 +1,15 @@
+PENDIENTES NO INVENTADOS:
+
+E8: Publicar el repositorio en GitHub, ejecutar el workflow 'CI Business Logic',
+guardar captura VERDE, inducir falla de prueba y guardar captura ROJA, revertir y
+guardar captura VERDE. Completar la URL en el reporte.
+
+E9: Indicar la empresa de tu PIA y TRES reglas REALES aprobadas. Completar 9 casos
+(éxito, error y límite de cada regla), crear pruebas ejecutables, una prueba de
+persistencia y un mock cuando exista servicio externo (o justificar su ausencia).
+
+E7: Ruff no pudo ejecutarse en este entorno por no estar instalado; ejecutar
+python -m ruff check src tests cargar_datos_demo.py en PC y guardar captura.
+
+E1-E7: Los registros .log se generaron ejecutando pytest en entorno Linux Python 3.13.5.
+Para capturas de pantalla de tu propia PC, repetir los comandos indicados en el reporte.

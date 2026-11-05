@@ -1,0 +1,16 @@
+﻿caso_id,resultado_esperado,resultado_real,estado,observaciones
+CP01,"CONFIRMED, cobro 120.00","CONFIRMED, cobro 120.00",APROBADO,
+CP02,"CONFIRMED, cobro 170.00","CONFIRMED, cobro 170.00",APROBADO,
+CP03,CustomerHasDebt,CustomerHasDebt,APROBADO,
+CP04,ValueError,ValueError,APROBADO,
+CP05,ValueError,ValueError,APROBADO,
+CP06,"CONFIRMED, cobro 850.00","CONFIRMED, cobro 850.00",APROBADO,
+CP07,"CONFIRMED, cobro 0.01","CONFIRMED, cobro 0.01",APROBADO,
+CP08,OrderAlreadyConfirmed,OrderAlreadyConfirmed,APROBADO,TDD: segunda confirmación bloqueada; estado permanece CONFIRMED
+CP09,"CONFIRMED, cobro 255.00","CONFIRMED, cobro 255.00",APROBADO,
+CP10,"CONFIRMED, cobro 75.00","CONFIRMED, cobro 75.00",APROBADO,
+CP11,CustomerHasDebt,CustomerHasDebt,APROBADO,
+CP12,"CONFIRMED, cobro 84.99","CONFIRMED, cobro 84.99",APROBADO,
+CP13,RuntimeError: payment rejected,RuntimeError: payment rejected,APROBADO,Usar mock del gateway
+CP14,Registro visible después de commit,Registro visible después de commit,APROBADO,Usar SqlOrderRepository
+CP15,Registro ausente después de rollback,Registro ausente después de rollback,APROBADO,Usar SqlOrderRepository
