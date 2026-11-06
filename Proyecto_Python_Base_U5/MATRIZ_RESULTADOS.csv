@@ -1,16 +1,27 @@
-﻿caso_id,resultado_esperado,resultado_real,estado,observaciones
-CP01,"CONFIRMED, cobro 120.00","CONFIRMED, cobro 120.00",APROBADO,
-CP02,"CONFIRMED, cobro 170.00","CONFIRMED, cobro 170.00",APROBADO,
-CP03,CustomerHasDebt,CustomerHasDebt,APROBADO,
-CP04,ValueError,ValueError,APROBADO,
-CP05,ValueError,ValueError,APROBADO,
-CP06,"CONFIRMED, cobro 850.00","CONFIRMED, cobro 850.00",APROBADO,
-CP07,"CONFIRMED, cobro 0.01","CONFIRMED, cobro 0.01",APROBADO,
-CP08,OrderAlreadyConfirmed,OrderAlreadyConfirmed,APROBADO,TDD: segunda confirmación bloqueada; estado permanece CONFIRMED
-CP09,"CONFIRMED, cobro 255.00","CONFIRMED, cobro 255.00",APROBADO,
-CP10,"CONFIRMED, cobro 75.00","CONFIRMED, cobro 75.00",APROBADO,
-CP11,CustomerHasDebt,CustomerHasDebt,APROBADO,
-CP12,"CONFIRMED, cobro 84.99","CONFIRMED, cobro 84.99",APROBADO,
-CP13,RuntimeError: payment rejected,RuntimeError: payment rejected,APROBADO,Usar mock del gateway
-CP14,Registro visible después de commit,Registro visible después de commit,APROBADO,Usar SqlOrderRepository
-CP15,Registro ausente después de rollback,Registro ausente después de rollback,APROBADO,Usar SqlOrderRepository
+caso_id,pedido_id,accion,resultado_esperado,nota
+CP01,1,confirmar,"CONFIRMED, cobro 120.00",
+CP02,2,confirmar,"CONFIRMED, cobro 170.00",
+CP03,3,confirmar,CustomerHasDebt,
+CP04,4,confirmar,ValueError,
+CP05,5,confirmar,ValueError,
+CP06,6,confirmar,"CONFIRMED, cobro 850.00",
+CP07,7,confirmar,"CONFIRMED, cobro 0.01",
+CP08,8,confirmar,CONFIRMED (comportamiento actual; ampliar con TDD),Caso TDD: no confirmar dos veces
+CP09,9,confirmar,"CONFIRMED, cobro 255.00",
+CP10,10,confirmar,"CONFIRMED, cobro 75.00",
+CP11,11,confirmar,CustomerHasDebt,
+CP12,12,confirmar,"CONFIRMED, cobro 84.99",
+CP13,,pago rechazado,RuntimeError: payment rejected,Usar mock del gateway
+CP14,,persistencia commit,Registro visible después de commit,Usar SqlOrderRepository
+CP15,,persistencia rollback,Registro ausente después de rollback,Usar SqlOrderRepository
+PIA-01,,aceptar() con 1 versión y 2 líneas,ACEPTADA,R1 Éxito
+PIA-02,,aceptar() sin versiones,DominioError,R1 Error
+PIA-03,,aceptar() con exactamente 1 línea,ACEPTADA,R1 Límite
+PIA-04,,registrar anticipo 100 MXN,Pago registrado,R2 Éxito
+PIA-05,,registrar anticipo -1 MXN,DominioError,R2 Error
+PIA-06,,registrar anticipo 0 MXN,DominioError,R2 Límite
+PIA-07,,confirmar() antes de vencer,CONFIRMADA,R3 Éxito
+PIA-08,,confirmar() expirada,DominioError,R3 Error
+PIA-09,,expirar() en instante exacto,EXPIRADA,R3 Límite
+PIA-10,,simular adaptador de notificación,Llamada exitosa,Mock
+PIA-11,,guardar Evento en SQLite y commit,Registro guardado,Persistencia
